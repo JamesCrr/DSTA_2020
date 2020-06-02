@@ -501,7 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serviceUrl: https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/6e8f0ea2-e263-4407-aed5-f0f6c35d0e02
   ResultsField: {fileID: 1863902092}
-  _iamApikey: 'xBcYJgJiRtmD3wgS3SCyCmikZIYPU8zCiKSCXOu5mEhV  '
+  _iamApikey: xBcYJgJiRtmD3wgS3SCyCmikZIYPU8zCiKSCXOu5mEhV
   _recognizeModel: 
 --- !u!4 &1646685151
 Transform:

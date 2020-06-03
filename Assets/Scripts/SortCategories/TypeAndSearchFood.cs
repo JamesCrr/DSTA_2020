@@ -7,15 +7,23 @@ public class TypeAndSearchFood : ItemFinder
 {
     public TMP_InputField m_TextInput;
 
+    TouchScreenKeyboard m_Keyboard;
+
+
     [Header("UI related")]
     public Transform m_DropDownParent;
     public GameObject m_DropDownPrefab;
     public GameObject m_DropDownContentPrefab;
 
+    public void Start()
+    {
+        m_Keyboard = TouchScreenKeyboard.Open(m_TextInput.text, TouchScreenKeyboardType.Default);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || (m_Keyboard != null && m_Keyboard.status == TouchScreenKeyboard.Status.Done))
         {
             //get list of groceries with similar names
             List<baseGroceryItemSO> list = SearchGroceries(m_TextInput.text);

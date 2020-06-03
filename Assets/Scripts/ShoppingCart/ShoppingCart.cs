@@ -117,13 +117,13 @@ public class ShoppingCart : MonoBehaviour
         m_CartViewActive = !m_CartViewActive;
         if(m_CartViewActive)
         {
-            m_CartUIParent.DOAnchorPosY(-58, 0.5f, true);
+            m_CartUIParent.DOAnchorPosY(-560, 0.5f, true);
             m_CartButtonImage.DOColor(Color.green, 0.4f);
             m_CartButtonText.text = "Continue Shopping";
         }
         else
         {
-            m_CartUIParent.DOAnchorPosY(-1184, 0.5f, true);
+            m_CartUIParent.DOAnchorPosY(-2946, 0.5f, true);
             m_CartButtonImage.color = Color.white;
             m_CartButtonText.text = "View Cart";
         }
@@ -131,7 +131,7 @@ public class ShoppingCart : MonoBehaviour
     void DisableCartView()
     {
         m_CartViewActive = false;
-        m_CartUIParent.DOAnchorPosY(-1184, 0.1f, true);
+        m_CartUIParent.DOAnchorPosY(-2946, 0.1f, true);
         m_CartButtonImage.color = Color.white;
         m_CartButtonText.text = "View Cart";
     }

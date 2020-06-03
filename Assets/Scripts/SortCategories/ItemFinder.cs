@@ -19,7 +19,7 @@ public class ItemFinder : MonoBehaviour
         }
     }
 
-    public List<baseGroceryItemSO> SearchGroceries(string keywords)
+    public List<baseGroceryItemSO> SearchGroceries(string keywords) 
     {
         Dictionary<baseGroceryItemSO.GROCERY_ID, baseGroceryItemSO> groceryList = GroceryItemDatabase.Instance.GetGroceryScriptableObjectDict();
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class TypeAndSearchFood : ItemFinder
@@ -37,6 +38,7 @@ public class TypeAndSearchFood : ItemFinder
 
             RemoveAllContentToPanel();
             InitDropDownUI(categorySorterDictionary);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
         }
     }
 

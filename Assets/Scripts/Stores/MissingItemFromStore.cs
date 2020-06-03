@@ -13,9 +13,21 @@ public class MissingItemFromStore : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI m_ItemNameText = null;
 
+    baseGroceryItemSO.GROCERY_ID missingID = baseGroceryItemSO.GROCERY_ID.TOTAL_GROCERY;
+
     public void SetMissingItemType(baseGroceryItemSO.GROCERY_ID newID)
     {
         m_ItemImageObject.sprite = GroceryItemDatabase.Instance.GetGroceryItem(newID).GetItemImage();
         m_ItemNameText.text = GroceryItemDatabase.Instance.GetGroceryItem(newID).GetItemName();
+        missingID = newID;
+    }
+    
+    public void RemoveMissingItemPressed()
+    {
+        ShoppingCart.Instance.RemoveItem(missingID);
+        StoreDetailCanvas.Instance.MissingItemRemovedFromList();
+
+        transform.parent = null;
+        Destroy(gameObject);
     }
 }

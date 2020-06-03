@@ -25,7 +25,8 @@ public class StoreDetailCanvas : MonoBehaviour
     GameObject m_MissingItemPrefab = null;
 
     Canvas m_Canvas = null;
-    
+    StoreObject m_MyStoreObject = null;
+
     public static StoreDetailCanvas Instance = null;
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class StoreDetailCanvas : MonoBehaviour
     }
     public void SetNewStoreDetails(StoreObject newStoreObject)
     {
+        m_MyStoreObject = newStoreObject;
         m_StoreImageObject.sprite = newStoreObject.GetStoreImage();
         m_StoreNameText.text = newStoreObject.GetStoreName();
         m_StoreAddressText.text = newStoreObject.GetStoreAddress();
@@ -76,5 +78,11 @@ public class StoreDetailCanvas : MonoBehaviour
             newMissingItem.GetComponent<MissingItemFromStore>().SetMissingItemType(missingItemID);
         }
 
+    }
+
+    public void MissingItemRemovedFromList()
+    {
+        StoreSelectCanvas.Instance.UpdateStoreMissingItems();
+        SetNewStoreDetails(m_MyStoreObject);
     }
 }

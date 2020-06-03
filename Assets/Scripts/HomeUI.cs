@@ -2,6 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum App_Scenes
+{
+    HomeUI,
+    StoreDetail,
+    StoreSelect,
+    CartPanel,
+    Search,
+    TotalScenes
+}
+
 public class HomeUI : MonoBehaviour
 {
     [Header("Home UI Settings")]
@@ -9,11 +19,16 @@ public class HomeUI : MonoBehaviour
     [SerializeField] GameObject PopularItemReference;
     [SerializeField] GameObject RecentItemReference;
     public GameObject HomeObject;
+    public GameObject SearchObject;
 
     List<baseGroceryItemSO> ListOfGroceryItems = new List<baseGroceryItemSO>();
     int maxFoodItems = 0;
 
     public static HomeUI Instance = null;
+
+    public App_Scenes currentPage;
+
+    public App_Scenes startingPage;
 
     private void Awake()
     {
@@ -31,6 +46,10 @@ public class HomeUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Always starts on home UI
+        currentPage = App_Scenes.HomeUI;
+        startingPage = App_Scenes.HomeUI;
+
         maxFoodItems = (int)baseGroceryItemSO.GROCERY_ID.TOTAL_GROCERY;
 
         // Loop through all the items
@@ -70,6 +89,32 @@ public class HomeUI : MonoBehaviour
             ItemPrefab.GetComponent<ItemPrefab>().Init(ListOfGroceryItems[i]);
         }
 
+    }
+
+    public void DisableSearchObject()
+    {
+        // Clear the panel
+        SearchObject.GetComponent<TypeAndSearchFood>().RemoveAllContentToPanel();
+        SearchObject.GetComponent<TypeAndSearchFood>().m_TextInput.text = "";
+        SearchObject.GetComponent<TypeAndSearchFood>().SetPanelActive(false);
+    }
+
+    public void EnableSearchObject()
+    {
+        SearchObject.GetComponent<TypeAndSearchFood>().SetPanelActive(true);
+    }
+
+    public void ToggleHome()
+    {
+        if (currentPage == App_Scenes.Search)
+        {
+            DisableSearchObject();
+
+            startingPage = App_Scenes.HomeUI;
+
+            //Set home UI to active
+            HomeObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame

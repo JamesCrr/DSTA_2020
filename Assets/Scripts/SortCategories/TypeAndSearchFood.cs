@@ -15,8 +15,23 @@ public class TypeAndSearchFood : ItemFinder
     public GameObject m_DropDownPrefab;
     public GameObject m_DropDownContentPrefab;
 
+    Image panelImage;
+    //Color panelDefaultColor;
+    //Color InactiveColor;
+
     public void Start()
     {
+        panelImage = GetComponent<Image>();
+
+        panelImage.enabled = false;
+
+        // Set up the color
+        //panelDefaultColor = panelImage.color;
+        //InactiveColor = panelDefaultColor;
+        //InactiveColor.a = 0;
+
+        // panelImage.color = InactiveColor;
+
         m_Keyboard = TouchScreenKeyboard.Open(m_TextInput.text, TouchScreenKeyboardType.Default);
     }
 
@@ -45,13 +60,27 @@ public class TypeAndSearchFood : ItemFinder
             }
 
             RemoveAllContentToPanel();
+            DisableHomeUI();
             InitDropDownUI(categorySorterDictionary);
             LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
         }
     }
 
+    public void DisableHomeUI()
+    {
+        HomeUI.Instance.HomeObject.SetActive(false);
+    }
+
     public void InitDropDownUI(Dictionary<baseGroceryItemSO.CATEGORY, List<baseGroceryItemSO>> grocerieList)
     {
+        //panelImage.color = panelDefaultColor;
+        SetPanelActive(true);
+
+        HomeUI.Instance.startingPage = App_Scenes.Search;
+        HomeUI.Instance.currentPage = App_Scenes.Search;
+
+        HomeUI.Instance.HomeObject.SetActive(false);
+
         //check how many categories i have first
         //check how many items in each category
         //start initialising
@@ -79,5 +108,13 @@ public class TypeAndSearchFood : ItemFinder
         {
             Destroy(child.gameObject);
         }
+    }
+
+    public void SetPanelActive(bool active)
+    {
+        if (active)
+            panelImage.enabled = true;
+        else
+            panelImage.enabled = false;
     }
 }

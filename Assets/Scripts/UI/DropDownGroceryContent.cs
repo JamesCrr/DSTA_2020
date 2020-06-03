@@ -21,5 +21,6 @@ public class DropDownGroceryContent : MonoBehaviour
     public void Click()
     {
         //go to the correct page
+        ItemDetailCanvas.Instance.OpenItemDetails(m_GroceryID);
     }
 }

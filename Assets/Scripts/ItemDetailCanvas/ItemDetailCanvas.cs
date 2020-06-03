@@ -66,6 +66,17 @@ public class ItemDetailCanvas : MonoBehaviour
     {
         m_CanvasCom.enabled = newValue;
 
+        //// If it came from the home UI
+        //if (HomeUI.Instance.currentScene == App_Scenes.HomeUI)
+        //{
+
+        //}
+        //// if it came from search UI
+        //else if (HomeUI.Instance.currentScene == App_Scenes.Search)
+        //{
+
+        //}
+
         // closing the page
         if (newValue == false)
             currentItem = null;
@@ -75,6 +86,14 @@ public class ItemDetailCanvas : MonoBehaviour
     {
         ToggleCanvas(true);
         SetNewItemDetail(itemData.GetEnumID());
+        //HomeUI.Instance.currentScene = App_Scenes.ItemCanvas;
+    }
+
+    public void OpenItemDetails(baseGroceryItemSO.GROCERY_ID enumID)
+    {
+        ToggleCanvas(true);
+        SetNewItemDetail(enumID);
+
     }
 
     public void AddItemToCart()

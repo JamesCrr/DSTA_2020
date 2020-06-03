@@ -42,7 +42,16 @@ public class StoreSelectCanvas : MonoBehaviour
         {
             m_Canvas.enabled = newValue;
 
-            HomeUI.Instance.HomeObject.SetActive(true);
+            ShoppingCart.Instance.ToggleCartView();
+            if (HomeUI.Instance.startingPage == App_Scenes.HomeUI)
+            {
+                HomeUI.Instance.HomeObject.SetActive(true);
+            }
+            else if (HomeUI.Instance.startingPage == App_Scenes.Search)
+            {
+                HomeUI.Instance.EnableSearchObject();
+            }
+            //
         }
     }
 

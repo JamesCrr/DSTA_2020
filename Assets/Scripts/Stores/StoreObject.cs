@@ -94,6 +94,7 @@ public class StoreObject : MonoBehaviour
 
     public void SelectButtonPressed()
     {
+        HomeUI.Instance.currentPage = App_Scenes.StoreDetail;
         StoreDetailCanvas.Instance.SetNewStoreDetails(this);
         StoreDetailCanvas.Instance.SetCanvasActive(true);
     }

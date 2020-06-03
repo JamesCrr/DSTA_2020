@@ -120,8 +120,21 @@ public class ShoppingCart : MonoBehaviour
     {
         DisableCartView();
         StoreSelectCanvas.Instance.SetCanvasActive(true);
-        // Disable home UI
-        HomeUI.Instance.HomeObject.SetActive(false);
+
+        HomeUI.Instance.currentPage = App_Scenes.StoreSelect;
+
+        // If the user selected with their last scene as home UI
+        if (HomeUI.Instance.startingPage == App_Scenes.HomeUI)
+        {
+            // Disable home UI
+            HomeUI.Instance.HomeObject.SetActive(false);
+        }
+        // else if the user was last from the search scene
+        else if (HomeUI.Instance.startingPage == App_Scenes.Search)
+        {
+            // Disable the search UI
+            HomeUI.Instance.DisableSearchObject();
+        }
     }
 
     public void ClearCart()
@@ -167,6 +180,8 @@ public class ShoppingCart : MonoBehaviour
             m_CartButtonText.text = "Continue Shopping";
             m_CartDetailsText.SetActive(false);
 
+            HomeUI.Instance.currentPage = App_Scenes.CartPanel;
+
             ItemDetailCanvas.Instance.ToggleCanvas(false);
         }
         else
@@ -180,7 +195,7 @@ public class ShoppingCart : MonoBehaviour
     void DisableCartView()
     {
         m_CartViewActive = false;
-        m_CartUIParent.DOAnchorPosY(-2946, 0.1f, true);
+        m_CartUIParent.DOAnchorPosY(-3200, 0.1f, true);
         m_CartButtonImage.color = Color.white;
         m_CartButtonText.text = "View Cart";
         m_CartDetailsText.SetActive(true);

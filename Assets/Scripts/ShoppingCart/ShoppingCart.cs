@@ -28,6 +28,8 @@ public class ShoppingCart : MonoBehaviour
     Image m_CartButtonImage = null;
     [SerializeField]
     TextMeshProUGUI m_CartButtonText = null;
+    [SerializeField] GameObject m_CartDetailsText = null;
+
     [Header("Display Items")]
     [SerializeField]
     Transform m_CartDisplayItemParent = null;
@@ -118,6 +120,8 @@ public class ShoppingCart : MonoBehaviour
     {
         DisableCartView();
         StoreSelectCanvas.Instance.SetCanvasActive(true);
+        // Disable home UI
+        HomeUI.Instance.HomeObject.SetActive(false);
     }
 
     void RecalculatePrice()
@@ -145,12 +149,16 @@ public class ShoppingCart : MonoBehaviour
             m_CartUIParent.DOAnchorPosY(-550, 0.5f, true);
             m_CartButtonImage.DOColor(Color.green, 1.0f);
             m_CartButtonText.text = "Continue Shopping";
+            m_CartDetailsText.SetActive(false);
+
+            ItemDetailCanvas.Instance.ToggleCanvas(false);
         }
         else
         {
             m_CartUIParent.DOAnchorPosY(-2946, 0.5f, true);
             m_CartButtonImage.color = Color.white;
             m_CartButtonText.text = "View Cart";
+            m_CartDetailsText.SetActive(true);
         }
     }
     void DisableCartView()
@@ -159,6 +167,8 @@ public class ShoppingCart : MonoBehaviour
         m_CartUIParent.DOAnchorPosY(-2946, 0.1f, true);
         m_CartButtonImage.color = Color.white;
         m_CartButtonText.text = "View Cart";
+        m_CartDetailsText.SetActive(true);
+
     }
 
     #endregion

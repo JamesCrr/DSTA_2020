@@ -59,15 +59,34 @@ public class ItemDetailCanvas : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI m_ItemDietaryFibre = null;
 
+    baseGroceryItemSO currentItem;
+
 
     public void ToggleCanvas(bool newValue)
     {
         m_CanvasCom.enabled = newValue;
+
+        // closing the page
+        if (newValue == false)
+            currentItem = null;
+    }
+
+    public void OpenItemDetails(baseGroceryItemSO itemData)
+    {
+        ToggleCanvas(true);
+        SetNewItemDetail(itemData.GetEnumID());
+    }
+
+    public void AddItemToCart()
+    {
+        ShoppingCart.Instance.AddItem(currentItem.GetEnumID());
     }
 
     public void SetNewItemDetail(baseGroceryItemSO.GROCERY_ID newItemID)
     {
         baseGroceryItemSO newItem = GroceryItemDatabase.Instance.GetGroceryItem(newItemID);
+
+        currentItem = newItem;
 
         m_ItemName.text = newItem.GetItemName();
         m_ItemPrice.text = "$" + newItem.GetItemPrice().ToString();

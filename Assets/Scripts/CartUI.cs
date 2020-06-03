@@ -23,7 +23,8 @@ public class CartUI : MonoBehaviour
 
         string NewText = CartCount.ToString() + " items in Cart";
 
-        CartTextObject.GetComponent<TextMeshProUGUI>().text = NewText;
+        if (CartTextObject.activeSelf)
+            CartTextObject.GetComponent<TextMeshProUGUI>().text = NewText;
     }
 
     public void GoToCart()

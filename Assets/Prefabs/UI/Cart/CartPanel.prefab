@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 340, y: 0}
+  m_AnchoredPosition: {x: 340, y: 10}
   m_SizeDelta: {x: 650, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &524461171
@@ -1194,6 +1194,7 @@ MonoBehaviour:
   m_CartUIParent: {fileID: 7745494807077464045}
   m_CartButtonImage: {fileID: 7745494806716041936}
   m_CartButtonText: {fileID: 7745494806591001649}
+  m_CartDetailsText: {fileID: 524461169}
   m_CartDisplayItemParent: {fileID: 7745494806063303383}
   m_GroceryItemPrefab: {fileID: 3873864565984106176, guid: f537c51186da67a4b94aa4f3b58df3b5,
     type: 3}

@@ -41,6 +41,8 @@ public class StoreSelectCanvas : MonoBehaviour
         else
         {
             m_Canvas.enabled = newValue;
+
+            HomeUI.Instance.HomeObject.SetActive(true);
         }
     }
 

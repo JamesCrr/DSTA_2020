@@ -8,9 +8,25 @@ public class HomeUI : MonoBehaviour
     [SerializeField] GameObject UIItemPrefab;
     [SerializeField] GameObject PopularItemReference;
     [SerializeField] GameObject RecentItemReference;
+    public GameObject HomeObject;
 
     List<baseGroceryItemSO> ListOfGroceryItems = new List<baseGroceryItemSO>();
     int maxFoodItems = 0;
+
+    public static HomeUI Instance = null;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this.gameObject)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -54,6 +54,9 @@ public class StoreDetailCanvas : MonoBehaviour
         else
         {
             m_Canvas.enabled = false;
+
+            // Enable the home object again
+            //HomeUI.Instance.HomeObject.SetActive(true);
         }
     }
     public void SetNewStoreDetails(StoreObject newStoreObject)

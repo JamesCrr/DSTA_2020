@@ -95,4 +95,12 @@ public class StoreDetailCanvas : MonoBehaviour
         StoreSelectCanvas.Instance.UpdateStoreMissingItems();
         SetNewStoreDetails(m_MyStoreObject);
     }
+
+    public void SetOffButtonPressed()
+    {
+        ShoppingCart.Instance.ClearCart();
+        // Go back to home page
+        SetCanvasActive(false);
+        StoreSelectCanvas.Instance.SetCanvasActive(false);
+    }
 }

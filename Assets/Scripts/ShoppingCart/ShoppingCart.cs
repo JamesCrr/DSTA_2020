@@ -124,6 +124,22 @@ public class ShoppingCart : MonoBehaviour
         HomeUI.Instance.HomeObject.SetActive(false);
     }
 
+    public void ClearCart()
+    {
+        foreach (Transform child in m_CartDisplayItemParent.transform)
+        {
+            child.parent = null;
+            Destroy(child.gameObject);
+        }
+        m_DictionaryCart.Clear();
+        NumOfItems = 0;
+
+        // Scroll Height Recalculate
+        RecalculateScrollHeight();
+        // Price Recalculate
+        RecalculatePrice();
+    }
+
     void RecalculatePrice()
     {
         float totalPrice = 0f;

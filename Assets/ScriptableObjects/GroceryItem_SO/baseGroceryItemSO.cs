@@ -12,11 +12,11 @@ public class baseGroceryItemSO : ScriptableObject
 
         GI_EGG,
         GI_MILK,
-        
+
         GI_FRESH_CHICKEN,
         GI_FRESH_PORK,
         GI_FRESH_SALMON,
-        
+
         GI_COFFEE_NESCAFE,
         GI_TEA_LIPONGREEN,
 
@@ -77,6 +77,7 @@ public class baseGroceryItemSO : ScriptableObject
     public string GetItemDescription() { return m_ItemDescription; }
     public float GetItemPrice() { return m_ItemPrice; }
     public GROCERY_ID GetEnumID() { return m_EnumID; }
+    public CATEGORY GetCategoryType() { return m_Category; }
 
     public bool IsItemHalal() { return m_Halal; }
     public bool IsItemHealthierChoice() { return m_HealthierChoice; }

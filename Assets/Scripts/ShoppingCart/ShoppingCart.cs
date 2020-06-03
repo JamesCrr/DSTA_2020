@@ -43,17 +43,17 @@ public class ShoppingCart : MonoBehaviour
         RecalculatePrice();
     }
 
-    //private void Update()
-    //{
-    //    if(Input.GetKeyUp(KeyCode.W))
-    //    {
-    //        AddItem(baseGroceryItemSO.GROCERY_ID.GI_MILK);
-    //    }
-    //    else if (Input.GetKeyUp(KeyCode.E))
-    //    {
-    //        RemoveItem(baseGroceryItemSO.GROCERY_ID.GI_MILK);
-    //    }
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            AddItem(baseGroceryItemSO.GROCERY_ID.GI_MILK);
+        }
+        else if (Input.GetKeyUp(KeyCode.E))
+        {
+            RemoveItem(baseGroceryItemSO.GROCERY_ID.GI_MILK);
+        }
+    }
 
     public void AddItem(baseGroceryItemSO.GROCERY_ID itemID)
     {
@@ -89,6 +89,11 @@ public class ShoppingCart : MonoBehaviour
         // Price Recalculate
         RecalculatePrice();
     }
+    public void SelectStorePressed()
+    {
+        DisableCartView();
+        StoreSelectCanvas.Instance.SetCanvasActive(true);
+    }
 
     void RecalculatePrice()
     {
@@ -123,9 +128,17 @@ public class ShoppingCart : MonoBehaviour
             m_CartButtonText.text = "View Cart";
         }
     }
+    void DisableCartView()
+    {
+        m_CartViewActive = false;
+        m_CartUIParent.DOAnchorPosY(-1184, 0.1f, true);
+        m_CartButtonImage.color = Color.white;
+        m_CartButtonText.text = "View Cart";
+    }
 
     #endregion
 
 
     public Dictionary<baseGroceryItemSO.GROCERY_ID, GroceryItemObject> GetCart() { return m_DictionaryCart; }
+    public int GetCartLength() { return m_DictionaryCart.Count; }
 }

@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class CartUI : MonoBehaviour
+{
+    [Header("Cart UI Settings")]
+    [SerializeField] GameObject CartTextObject;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Gets the current count of objects in the Cart
+        int CartCount = ShoppingCart.Instance.GetCart().Count;
+
+        CartTextObject.GetComponent<TextMeshProUGUI>().text = CartCount.ToString();
+    }
+
+    public void GoToCart()
+    {
+
+    }
+}

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GroceryItemObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    baseGroceryItemSO m_SOReference = null;
 
-    // Update is called once per frame
-    void Update()
+    public void AssignSO(baseGroceryItemSO scriptableObject)
     {
-        
+        if (m_SOReference != null)
+            return;
+        m_SOReference = scriptableObject;
     }
+    public baseGroceryItemSO GetAssignedSO() { return m_SOReference; }
+
+
 }

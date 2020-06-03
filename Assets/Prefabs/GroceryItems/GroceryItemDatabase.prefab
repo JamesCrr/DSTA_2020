@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7735860059010001983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7735860059010001981}
+  - component: {fileID: 7735860059010001980}
+  m_Layer: 0
+  m_Name: GroceryItemDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7735860059010001981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735860059010001983}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7735860059010001980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735860059010001983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de41ab16e0c5ac14687ca5641bdc8275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ListOfScriptableObjects:
+  - {fileID: 11400000, guid: 99c3e967d0ab82f4a97469fbff384f61, type: 2}
+  - {fileID: 11400000, guid: 9c6f5a1cbefd0ea4f93f7ae2633428b7, type: 2}
+  - {fileID: 11400000, guid: 66603a7370aa33d4ba5deb2256aada9e, type: 2}
+  - {fileID: 11400000, guid: a142992553b5c7e42aa4a2c5e22844a6, type: 2}
+  - {fileID: 11400000, guid: 4f8ad17f058f3354daccc99f113269a7, type: 2}
+  - {fileID: 11400000, guid: 22d8be89793e62d499b3ae2da7421422, type: 2}
+  - {fileID: 11400000, guid: af27d9190a16f8142bb68773d6e6465b, type: 2}
+  - {fileID: 11400000, guid: f090a646e9504db4ba5c47aa15d2e98b, type: 2}
+  - {fileID: 11400000, guid: 939d535673af8c24aa03a7a80bc9ae89, type: 2}

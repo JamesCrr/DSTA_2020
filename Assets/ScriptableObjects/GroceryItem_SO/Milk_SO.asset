@@ -17,6 +17,7 @@ MonoBehaviour:
   m_ItemPrice: 1.5
   m_ItemDescription: 
   m_EnumID: 3
+  m_Category: 2
   m_Edible: 1
   m_Halal: 0
   m_HealthierChoice: 1

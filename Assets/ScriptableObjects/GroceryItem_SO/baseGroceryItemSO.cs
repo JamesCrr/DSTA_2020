@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "GroceryItem")]
 public class baseGroceryItemSO : ScriptableObject
@@ -25,6 +23,14 @@ public class baseGroceryItemSO : ScriptableObject
         TOTAL_GROCERY
     }
 
+    public enum CATEGORY
+    {
+        C_FRUITS_AND_VEGATABLES,
+        C_MEAT_AND_SEAFOOD,
+        C_DAIRY_CHILLED_EGGS,
+        C_DRINKS,
+    }
+
     [Header("Basic Info")]
     [SerializeField]
     Sprite m_ItemImage = null;
@@ -36,6 +42,8 @@ public class baseGroceryItemSO : ScriptableObject
     string m_ItemDescription = "";
     [SerializeField]
     GROCERY_ID m_EnumID = GROCERY_ID.GI_APPLE;
+    [SerializeField]
+    CATEGORY m_Category = CATEGORY.C_FRUITS_AND_VEGATABLES;
 
     [Header("Dietary")]
     [SerializeField]

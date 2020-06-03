@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+
 using TMPro;
 
 public class DropDownOption : MonoBehaviour
@@ -39,5 +41,7 @@ public class DropDownOption : MonoBehaviour
     public void DropDownSwitch()
     {
         m_DropDownContentPanel.SetActive(!m_DropDownContentPanel.activeSelf);
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }

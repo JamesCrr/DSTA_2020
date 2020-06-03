@@ -10,12 +10,14 @@ public class FlowManager : MonoBehaviour
     private FlowStates currState;
     [SerializeField]
     private Text speechToText;
-    private int kmWillingToTravel;
+    private int mWillingToTravel;
     private bool amHalal;
     private baseGroceryItemSO itemSearched;
     private int amountBought;
     private bool waitingOnResponse = true;
     private List<baseGroceryItemSO> itemsBought;
+    private bool milkBought = false;
+    private bool nexChosen = false;
 
     public static FlowManager Instance { get { return _instance; } }
 
@@ -52,9 +54,10 @@ public class FlowManager : MonoBehaviour
     {
         currState = FlowStates.state_travelRestrictions;
         TTSManager.Instance.TextToSpeech("Hello, do you have any travel restrictions?");
-        kmWillingToTravel = -1;
+        mWillingToTravel = -1;
         amHalal = false;
         amountBought = 0;
+        itemsBought = new List<baseGroceryItemSO>();
     }
 
     private void Update()
@@ -68,7 +71,7 @@ public class FlowManager : MonoBehaviour
                 }
                 else if (speechToText.text.Contains("no") && speechToText.text.Contains("Final"))
                 {
-                    kmWillingToTravel = -1;
+                    mWillingToTravel = -1;
                     ChangeState(FlowStates.state_dietryRestrictions);
                 }
                 else if((speechToText.text.Contains("repeat") || speechToText.text.Contains("again")) && speechToText.text.Contains("Final"))
@@ -87,7 +90,7 @@ public class FlowManager : MonoBehaviour
                         else
                             break;
                     }
-                    kmWillingToTravel = int.Parse(tempDigit);
+                    mWillingToTravel = int.Parse(tempDigit);
                     ChangeState(FlowStates.state_dietryRestrictions);
                 }
                 else if ((speechToText.text.Contains("repeat") || speechToText.text.Contains("again")) && speechToText.text.Contains("Final"))
@@ -140,15 +143,24 @@ public class FlowManager : MonoBehaviour
                         {
                             if (categoryItem == item)
                             {
+                                if (amHalal && !item.IsItemHalal())
+                                    continue;
                                 itemsSearched.Add(item);
                             }
                         }
                     }
                     if (itemsSearched.Count == 0)
                     {
-                        itemsSearched = itemsByName;
+                        foreach (baseGroceryItemSO item in itemsByName)
+                        {
+                            if (amHalal && !item.IsItemHalal())
+                                continue;
+                            itemsSearched.Add(item);
+                        }
                         foreach (baseGroceryItemSO item in itemsByCategory)
                         {
+                            if (amHalal && !item.IsItemHalal())
+                                continue;
                             itemsSearched.Add(item);
                         }
                     }
@@ -196,6 +208,18 @@ public class FlowManager : MonoBehaviour
                     //add amountBought amount of itemSearched into cart (function) 
                     itemSearched.SetAmountInCart(amountBought);
                     itemsBought.Add(itemSearched);
+                    //Hardcode
+                    if(itemSearched.GetItemName() == "Milk")
+                        milkBought = true;
+                    ChangeState(FlowStates.state_continueOrCheckout);
+                }
+                else if (speechToText.text.Contains("one") && speechToText.text.Contains("Final"))
+                {
+                    itemSearched.SetAmountInCart(1);
+                    itemsBought.Add(itemSearched);
+                    //Hardcode
+                    if (itemSearched.GetItemName() == "Milk")
+                        milkBought = true;
                     ChangeState(FlowStates.state_continueOrCheckout);
                 }
                 else if (speechToText.text.Contains("no") && speechToText.text.Contains("Final"))
@@ -318,7 +342,25 @@ public class FlowManager : MonoBehaviour
                     //remove amountBought amount of itemSearched into cart (function) 
                     itemSearched.SetAmountInCart(itemSearched.GetAmountInCart() - amountBought);
                     if (itemSearched.GetAmountInCart() <= 0)
+                    {
                         itemsBought.Remove(itemSearched);
+                        //Hardcode
+                        if (itemSearched.GetItemName() == "Milk")
+                            milkBought = false;
+                    }
+                    ChangeState(FlowStates.state_verifyCart);
+                }
+                else if (speechToText.text.Contains("one") && speechToText.text.Contains("Final"))
+                {
+                    //remove amountBought amount of itemSearched into cart (function) 
+                    itemSearched.SetAmountInCart(itemSearched.GetAmountInCart() - 1);
+                    if (itemSearched.GetAmountInCart() <= 0)
+                    {
+                        itemsBought.Remove(itemSearched);
+                        //Hardcode
+                        if (itemSearched.GetItemName() == "Milk")
+                            milkBought = false;
+                    }
                     ChangeState(FlowStates.state_verifyCart);
                 }
                 else if (speechToText.text.Contains("no") && speechToText.text.Contains("Final"))
@@ -331,6 +373,24 @@ public class FlowManager : MonoBehaviour
                 }
                 break;
             case FlowStates.state_storeSuggestion:
+                if (speechToText.text.Contains("prime") && speechToText.text.Contains("Final"))
+                {
+                    //function to plan route
+                    //Hardcode
+                    nexChosen = false;
+                    ChangeState(FlowStates.state_planRoute);
+                }
+                else if (speechToText.text.Contains("next") && speechToText.text.Contains("Final")) //nex is not a word, next is closest
+                {
+                    //function to plan route
+                    //Hardcode
+                    nexChosen = true;
+                    ChangeState(FlowStates.state_planRoute);
+                }
+                else if ((speechToText.text.Contains("repeat") || speechToText.text.Contains("again")) && speechToText.text.Contains("Final"))
+                {
+                    ChangeState(currState);
+                }
                 break;
             case FlowStates.state_planRoute:
                 break;
@@ -370,18 +430,18 @@ public class FlowManager : MonoBehaviour
                 TTSManager.Instance.TextToSpeech("Hello, do you have any travel restrictions?");
                 break;
             case FlowStates.state_whatTravelRestrictions:
-                TTSManager.Instance.TextToSpeech("How far in kilometers are you willing to travel?");
+                TTSManager.Instance.TextToSpeech("How far in meters are you willing to travel?");
                 break;
             case FlowStates.state_dietryRestrictions:
                 TTSManager.Instance.TextToSpeech("What dietry restrictions do you have? If you don't have any, say no");
                 break;
             case FlowStates.state_confirmSettings:
                 temp = "So you are willing to travel ";
-                if (kmWillingToTravel == -1)
+                if (mWillingToTravel == -1)
                     temp += "any amount of";
                 else
-                    temp += kmWillingToTravel.ToString();
-                temp += " kilometers and you ";
+                    temp += mWillingToTravel.ToString();
+                temp += " meters and you ";
                 if (amHalal)
                     temp += "are halal. ";
                 else
@@ -414,7 +474,7 @@ public class FlowManager : MonoBehaviour
                     temp += " ";
                     temp += item.GetItemName();
                 }
-                temp += "Would you like to change anything in your cart?";
+                temp += ". Would you like to change anything in your cart?";
                 TTSManager.Instance.TextToSpeech(temp);
                 break;
             case FlowStates.state_addOrRemove:
@@ -436,8 +496,18 @@ public class FlowManager : MonoBehaviour
                 TTSManager.Instance.TextToSpeech(temp);
                 break;
             case FlowStates.state_storeSuggestion:
+                //Hardcode
+                if(milkBought)
+                    TTSManager.Instance.TextToSpeech("One supermarket I can suggest is Nex Supermarket. It is 200 meters away, is crowded and does not have milk. Another suggestion is Prime Supermarket, It is 3500 meters away, is not crowded and has everything you want. Which one would you prefer?");
+                else
+                    TTSManager.Instance.TextToSpeech("One supermarket I can suggest is Nex Supermarket. It is 200 meters away, is crowded and has everything you want. Another suggestion is Prime Supermarket, It is 3500 meters away, is not crowded and has everything you want. Which one would you prefer?");
                 break;
             case FlowStates.state_planRoute:
+                //Hardcode
+                if (nexChosen)
+                    TTSManager.Instance.TextToSpeech("Ok, I have planned a route to nex supermarket. Thank you for using my assistance!");
+                else
+                    TTSManager.Instance.TextToSpeech("Ok, I have planned a route to prime supermarket. Thank you for using my assistance!");
                 break;
             default:
                 break;

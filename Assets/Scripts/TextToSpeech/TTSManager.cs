@@ -167,7 +167,7 @@ public class TTSManager : MonoBehaviour
             source.clip = clip;
             source.Play();
 
-            //GameObject.Destroy(audioObject, clip.length);
+            GameObject.Destroy(audioObject, clip.length);
         }
     }
     #endregion

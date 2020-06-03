@@ -77,6 +77,7 @@ public class baseGroceryItemSO : ScriptableObject
     [Header("Price")]
     [SerializeField]
     int m_dollars = 0;
+    [SerializeField]
     int m_cents = 0;
 
     int amountInCart;

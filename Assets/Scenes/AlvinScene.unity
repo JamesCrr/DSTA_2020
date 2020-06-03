@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 529956964}
   - component: {fileID: 529956963}
   - component: {fileID: 529956966}
+  - component: {fileID: 529956967}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -300,8 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f741018586fc46848a0d7a4cf7384d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iamApikey: oulnqMk0X_lZzkLbZZy7RjVYKgzs6h95x2vQZsnhn0oN
-  serviceUrl: https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/cd3cc988-01f5-4e21-8d33-4c869ad1b0a7
+  iamApikey: 0F-5OLWuW4MHm7R5Wb38NdCMID_FjEzgHKuIQZnXrh8z
+  serviceUrl: https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/9c731590-4513-42a0-9b7f-d6b4463b4386
   flowManager: {fileID: 529956963}
 --- !u!4 &529956965
 Transform:
@@ -329,10 +330,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dffcb047c29a9d04fbe134c6109b2c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serviceUrl: https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/6e8f0ea2-e263-4407-aed5-f0f6c35d0e02
+  _serviceUrl: https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/a4f7bb2f-e996-4dec-bf26-87ab6c8c1d1c
   ResultsField: {fileID: 1229193369}
-  _iamApikey: xBcYJgJiRtmD3wgS3SCyCmikZIYPU8zCiKSCXOu5mEhV
+  _iamApikey: e9BZtVOSWSxo9vPyUZfQ0CHNCNdPKWopesbd-aH7yeMX
   _recognizeModel: 
+--- !u!114 &529956967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529956962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a2a53b1d32d5d479bb79628327fe7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

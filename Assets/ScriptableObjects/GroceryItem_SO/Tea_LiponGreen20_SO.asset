@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ItemImage: {fileID: 21300000, guid: 4efbadb3aae8c8d4f850dafb47550c48, type: 3}
   m_ItemName: Lipon Green Tea (20 Bags)
-  m_ItemPrice: 1.5
+  m_ItemPrice: 6.6
   m_ItemDescription: 
   m_EnumID: 8
   m_Category: 3
-  categoryString: Drink
+  categoryString:
+  - lipton
+  - green tea
+  - tea
+  - drink
   m_Edible: 1
   m_Halal: 1
   m_HealthierChoice: 0
@@ -30,3 +34,5 @@ MonoBehaviour:
   m_Protein: 1.2
   m_Carbohydrate: 20.5
   m_DietaryFibre: 4.5
+  m_dollars: 6
+  m_cents: 60

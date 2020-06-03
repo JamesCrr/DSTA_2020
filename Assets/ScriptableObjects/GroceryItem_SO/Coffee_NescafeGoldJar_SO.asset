@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ItemImage: {fileID: 21300000, guid: c1ed8f8081a85d8449eee4466e58356c, type: 3}
   m_ItemName: Nescafe Gold Jar
-  m_ItemPrice: 1.5
+  m_ItemPrice: 15.65
   m_ItemDescription: 
   m_EnumID: 7
   m_Category: 3
-  categoryString: Drink
+  categoryString:
+  - nescafe
+  - gold jar
+  - coffee
+  - drink
   m_Edible: 1
-  m_Halal: 0
+  m_Halal: 1
   m_HealthierChoice: 0
   m_Energy: 108
   m_Cholesterol: 0
@@ -30,3 +34,5 @@ MonoBehaviour:
   m_Protein: 1.2
   m_Carbohydrate: 20.5
   m_DietaryFibre: 4.5
+  m_dollars: 15
+  m_cents: 65

@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ItemImage: {fileID: 21300000, guid: 8062dc47fafb99e4cafdec6c598f6856, type: 3}
   m_ItemName: Fresh Salmon
-  m_ItemPrice: 1.5
+  m_ItemPrice: 6.2
   m_ItemDescription: 
   m_EnumID: 6
   m_Category: 1
-  categoryString: Meat
+  categoryString:
+  - salmon
+  - fish
+  - fishes
   m_Edible: 1
   m_Halal: 1
   m_HealthierChoice: 0
@@ -30,3 +33,5 @@ MonoBehaviour:
   m_Protein: 1.2
   m_Carbohydrate: 20.5
   m_DietaryFibre: 4.5
+  m_dollars: 6
+  m_cents: 20

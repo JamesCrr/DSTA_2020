@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "GroceryItem")]
 public class baseGroceryItemSO : ScriptableObject
@@ -44,6 +45,8 @@ public class baseGroceryItemSO : ScriptableObject
     GROCERY_ID m_EnumID = GROCERY_ID.GI_APPLE;
     [SerializeField]
     CATEGORY m_Category = CATEGORY.C_FRUITS_AND_VEGATABLES;
+    [SerializeField]
+    List<string> categoryString;
 
     [Header("Dietary")]
     [SerializeField]
@@ -71,6 +74,13 @@ public class baseGroceryItemSO : ScriptableObject
     [SerializeField]
     float m_DietaryFibre = 4.5f;
 
+    [Header("Price")]
+    [SerializeField]
+    int m_dollars = 0;
+    int m_cents = 0;
+
+    int amountInCart;
+
 
     public Sprite GetItemImage() { return m_ItemImage; }
     public string GetItemName() { return m_ItemName; }
@@ -90,5 +100,13 @@ public class baseGroceryItemSO : ScriptableObject
     public float GetNutrition_Protein() { return m_Protein; }
     public float GetNutrition_Carbohydrate() { return m_Carbohydrate; }
     public float GetNutrition_DietaryFibre() { return m_DietaryFibre; }
+
+    public List<string> GetKeywordsString() { return categoryString; }
+
+    public int GetDollars() { return m_dollars; }
+    public int GetCents() { return m_cents; }
+
+    public int GetAmountInCart() { return amountInCart; }
+    public void SetAmountInCart(int amount) { amountInCart = amount; }
 
 }

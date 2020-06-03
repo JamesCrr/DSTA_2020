@@ -18,6 +18,7 @@ MonoBehaviour:
   m_ItemDescription: 
   m_EnumID: 2
   m_Category: 2
+  categoryString: Dairy
   m_Edible: 1
   m_Halal: 0
   m_HealthierChoice: 0

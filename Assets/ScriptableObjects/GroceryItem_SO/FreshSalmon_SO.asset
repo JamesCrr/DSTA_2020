@@ -18,6 +18,7 @@ MonoBehaviour:
   m_ItemDescription: 
   m_EnumID: 6
   m_Category: 1
+  categoryString: Meat
   m_Edible: 1
   m_Halal: 1
   m_HealthierChoice: 0

@@ -24,7 +24,7 @@ public class StoreSelectCanvas : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         m_Canvas = GetComponent<Canvas>();
-        SetCanvasActive(false);
+        //SetCanvasActive(false);
     }
     private void Start()
     {

@@ -117,8 +117,8 @@ public class ShoppingCart : MonoBehaviour
         m_CartViewActive = !m_CartViewActive;
         if(m_CartViewActive)
         {
-            m_CartUIParent.DOAnchorPosY(-560, 0.5f, true);
-            m_CartButtonImage.DOColor(Color.green, 0.4f);
+            m_CartUIParent.DOAnchorPosY(-550, 0.5f, true);
+            m_CartButtonImage.DOColor(Color.green, 1.0f);
             m_CartButtonText.text = "Continue Shopping";
         }
         else

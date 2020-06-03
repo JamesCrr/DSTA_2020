@@ -53,6 +53,23 @@ public class StoreObject : MonoBehaviour
     public Sprite GetStoreImage() { return m_StoreImage; }
     public float GetStoreDistance() { return m_StoreDistance; }
     public STORE_CROWDED GetStoreCrowded() { return m_StoreCrowded; }
+    public string GetStoreCrowdedStringFormat()
+    {
+        string stringToReturn = "";
+        switch (m_StoreCrowded)
+        {
+            case STORE_CROWDED.VERY_CROWDED:
+                stringToReturn = "Very Crowded";
+                break;
+            case STORE_CROWDED.CROWDED:
+                stringToReturn = "Crowded";
+                break;
+            case STORE_CROWDED.NOT_CROWDED:
+                stringToReturn = "Not Crowded";
+                break;
+        }
+        return stringToReturn;
+    }
     public List<baseGroceryItemSO.GROCERY_ID> GetOutOfStockItems() { return m_ListOfOutItems; }
 
     #region UI Related

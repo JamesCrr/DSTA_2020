@@ -18,6 +18,8 @@ public class StoreDetailCanvas : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI m_StoreDistanceText = null;
     [SerializeField]
+    TextMeshProUGUI m_StoreCrowdedText = null;
+    [SerializeField]
     TextMeshProUGUI m_MissingItemsText = null;
     [SerializeField]
     Transform m_MissingItemsParent = null;
@@ -61,6 +63,11 @@ public class StoreDetailCanvas : MonoBehaviour
         m_StoreNameText.text = newStoreObject.GetStoreName();
         m_StoreAddressText.text = newStoreObject.GetStoreAddress();
         m_StoreDistanceText.text = newStoreObject.GetStoreDistance().ToString() + "m";
+        m_StoreCrowdedText.text = newStoreObject.GetStoreCrowdedStringFormat();
+        if (m_StoreCrowdedText.text == "Very Crowded" || m_StoreCrowdedText.text == "Crowded")
+            m_StoreCrowdedText.color = Color.red;
+        else
+            m_StoreCrowdedText.color = Color.white;
 
         m_MissingItemsText.text = newStoreObject.GetMissingTextObject().text;
         m_MissingItemsText.color = newStoreObject.GetMissingTextObject().color;

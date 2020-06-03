@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0b6584dadc58c242997df6a2370b29a, type: 3}
-  m_Name: FreshChicken
+  m_Name: FreshChicken_SO
   m_EditorClassIdentifier: 
-  m_ItemImage: {fileID: 0}
-  m_ItemName: Item Name
+  m_ItemImage: {fileID: 21300000, guid: 58c7ce385809f434aa4dc6e51dc85c64, type: 3}
+  m_ItemName: Fresh Chicken
   m_ItemPrice: 1.5
   m_ItemDescription: 
   m_Edible: 1
-  m_Halal: 0
+  m_Halal: 1
   m_HealthierChoice: 0
   m_Energy: 108
   m_Cholesterol: 0

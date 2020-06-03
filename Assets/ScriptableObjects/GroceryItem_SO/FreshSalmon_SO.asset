@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0b6584dadc58c242997df6a2370b29a, type: 3}
-  m_Name: FreshSalmon
+  m_Name: FreshSalmon_SO
   m_EditorClassIdentifier: 
-  m_ItemImage: {fileID: 0}
-  m_ItemName: Item Name
+  m_ItemImage: {fileID: 21300000, guid: 8062dc47fafb99e4cafdec6c598f6856, type: 3}
+  m_ItemName: Fresh Salmon
   m_ItemPrice: 1.5
   m_ItemDescription: 
   m_Edible: 1
-  m_Halal: 0
+  m_Halal: 1
   m_HealthierChoice: 0
   m_Energy: 108
   m_Cholesterol: 0

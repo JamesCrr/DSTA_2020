@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b6584dadc58c242997df6a2370b29a, type: 3}
   m_Name: Banana_SO
   m_EditorClassIdentifier: 
-  m_ItemImage: {fileID: 0}
-  m_ItemName: Item Name
+  m_ItemImage: {fileID: 21300000, guid: 6d408608500f01a4eb130ce29d05edda, type: 3}
+  m_ItemName: Banana
   m_ItemPrice: 1.5
   m_ItemDescription: 
   m_Edible: 1

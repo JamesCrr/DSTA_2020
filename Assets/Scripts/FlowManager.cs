@@ -205,6 +205,22 @@ public class FlowManager : MonoBehaviour
                             break;
                     }
                     amountBought = int.Parse(tempDigit);
+                    
+                    // If they bought more than 1 item
+                    if (amountBought > 1)
+                    {
+                        // Add it for how many times they wanted it
+                        for(int i = 0; i < amountBought; ++i)
+                        {
+                            ShoppingCart.Instance.AddItem(itemSearched.GetEnumID());
+                        }
+                    }
+                    else
+                    {
+                        // They only wanted one
+                        ShoppingCart.Instance.AddItem(itemSearched.GetEnumID());
+                    }
+
                     //add amountBought amount of itemSearched into cart (function) 
                     itemSearched.SetAmountInCart(amountBought);
                     itemsBought.Add(itemSearched);
@@ -238,6 +254,9 @@ public class FlowManager : MonoBehaviour
                 }
                 else if (speechToText.text.Contains("no") && speechToText.text.Contains("Final"))
                 {
+                    // Open up the cart page here
+                    ShoppingCart.Instance.ToggleCartView();
+
                     ChangeState(FlowStates.state_verifyCart);
                 }
                 else if ((speechToText.text.Contains("repeat") || speechToText.text.Contains("again")) && speechToText.text.Contains("Final"))
@@ -252,6 +271,9 @@ public class FlowManager : MonoBehaviour
                 }
                 else if (speechToText.text.Contains("no") && speechToText.text.Contains("Final"))
                 {
+                    // Change to Store Selective
+                    ShoppingCart.Instance.SelectStorePressed();
+
                     ChangeState(FlowStates.state_storeSuggestion);
                 }
                 else if ((speechToText.text.Contains("repeat") || speechToText.text.Contains("again")) && speechToText.text.Contains("Final"))

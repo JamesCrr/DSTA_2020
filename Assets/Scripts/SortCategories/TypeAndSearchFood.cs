@@ -2,7 +2,6 @@
 using UnityEngine;
 using TMPro;
 
-
 public class TypeAndSearchFood : ItemFinder
 {
     public TMP_InputField m_TextInput;
@@ -36,6 +35,7 @@ public class TypeAndSearchFood : ItemFinder
                 categorySorterDictionary[item.GetCategoryType()].Add(item);
             }
 
+            RemoveAllContentToPanel();
             InitDropDownUI(categorySorterDictionary);
         }
     }
@@ -60,6 +60,14 @@ public class TypeAndSearchFood : ItemFinder
             {
                 dropDownOption.AddContentToPanel(Instantiate(m_DropDownContentPrefab), grocery.GetEnumID());
             }
+        }
+    }
+
+    public void RemoveAllContentToPanel()
+    {
+        foreach (Transform child in m_DropDownParent)
+        {
+            Destroy(child.gameObject);
         }
     }
 }

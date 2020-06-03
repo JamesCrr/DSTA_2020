@@ -42,5 +42,10 @@ public class GroceryItemDatabase : MonoBehaviour
         return null;
     }
 
+    public Dictionary<baseGroceryItemSO.GROCERY_ID, baseGroceryItemSO> GetGroceryScriptableObjectDict()
+    {
+        return m_DictOfScriptableObjects;
+    }
+
 
 }

@@ -37,6 +37,8 @@ public class ShoppingCart : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI m_TotalPriceText = null;
 
+    [System.NonSerialized] public int NumOfItems = 0;
+
     private void Start()
     {
         RecalculateScrollHeight();
@@ -61,6 +63,9 @@ public class ShoppingCart : MonoBehaviour
         {
             m_DictionaryCart[itemID].IncreaseItemCountButtonPressed();
             // Price Recalculate
+
+            NumOfItems++;
+
             RecalculatePrice();
             return;
         }
@@ -74,20 +79,40 @@ public class ShoppingCart : MonoBehaviour
         RecalculateScrollHeight();
         // Price Recalculate
         RecalculatePrice();
+
+        NumOfItems++;
     }
     public void RemoveItem(baseGroceryItemSO.GROCERY_ID itemID)
     {
         if (!m_DictionaryCart.ContainsKey(itemID))
             return;
-        // Destroy Object
-        GroceryItemObject itemToRemove = m_DictionaryCart[itemID];
-        itemToRemove.transform.parent = null;
-        Destroy(itemToRemove.gameObject);
-        m_DictionaryCart.Remove(itemID);
-        // Scroll Height Recalculate
-        RecalculateScrollHeight();
-        // Price Recalculate
-        RecalculatePrice();
+        else
+        {
+            // If it returns true means it successfully reduced by 1
+            if(m_DictionaryCart[itemID].DecreaseItemCountButtonPressed())
+            {
+                NumOfItems--;
+
+                RecalculatePrice();
+            }
+            // If it didnt that means theres no more items and it should be deleted
+            // hopefully
+            else
+            {
+                // Destroy Object
+                GroceryItemObject itemToRemove = m_DictionaryCart[itemID];
+                itemToRemove.transform.parent = null;
+                Destroy(itemToRemove.gameObject);
+                m_DictionaryCart.Remove(itemID);
+                // Scroll Height Recalculate
+                RecalculateScrollHeight();
+                // Price Recalculate
+                RecalculatePrice();
+
+                NumOfItems--;
+
+            }
+        }
     }
     public void SelectStorePressed()
     {

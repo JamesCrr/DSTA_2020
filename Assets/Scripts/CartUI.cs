@@ -19,9 +19,11 @@ public class CartUI : MonoBehaviour
     void Update()
     {
         // Gets the current count of objects in the Cart
-        int CartCount = ShoppingCart.Instance.GetCart().Count;
+        int CartCount = ShoppingCart.Instance.NumOfItems;
 
-        CartTextObject.GetComponent<TextMeshProUGUI>().text = CartCount.ToString();
+        string NewText = CartCount.ToString() + " items in Cart";
+
+        CartTextObject.GetComponent<TextMeshProUGUI>().text = NewText;
     }
 
     public void GoToCart()

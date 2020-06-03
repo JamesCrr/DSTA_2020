@@ -36,15 +36,19 @@ public class GroceryItemObject : MonoBehaviour
         m_ItemCounter++;
         UpdateTextCounter();
     }
-    public void DecreaseItemCountButtonPressed()
+    public bool DecreaseItemCountButtonPressed()
     {
-        m_ItemCounter--;
-        if(m_ItemCounter <= 0)
+        if (m_ItemCounter <= 1)
         {
-            ShoppingCart.Instance.RemoveItem(m_SOReference.GetEnumID());
-            return;
+            //ShoppingCart.Instance.RemoveItem(m_SOReference.GetEnumID());
+            return false;
         }
+
+        m_ItemCounter--;
+
         UpdateTextCounter();
+
+        return true;
     }
     public void RemoveItemButtonPressed()
     {
